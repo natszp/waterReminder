@@ -1,24 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
+import DrinksList from './components/Drinks/DrinksList';
+import DrinkForm from './components/NewDrink/DrinkForm';
 
 function App() {
+
+  const drinks = [
+    {type: 'water', amount:200},
+    {type: 'tea', amount: 100},
+
+    
+  ]
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-          <p>extra</p>
-        </a>
-      </header>
+      <DrinksList drinks={drinks}/>
+      <DrinkForm />
     </div>
   );
 }
