@@ -2,7 +2,7 @@ import DrinkForm from "./DrinkForm"
 import './NewDrink.css'
 
 
-const NewDrink = () => {
+const NewDrink = (props) => {
 
     const addDrinkHandler = (enteredDrinkData) => {
         const drinkData = {
@@ -10,6 +10,7 @@ const NewDrink = () => {
             id: Math.random().toString() // just for the beginning
         }
         console.log(drinkData)
+        props.onAddDrinkToDrinks(drinkData)
     }
 
     return(
