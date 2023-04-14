@@ -7,8 +7,9 @@ const DrinksList = (props) => {
     return (
         <div>
             <Card className='drinks'>
-                <DrinkItem type={props.drinks[1].type} amount={props.drinks[1].amount} />
-                <DrinkItem type={props.drinks[0].type} amount={props.drinks[0].amount} />
+                {props.drinks.map(drink =>
+                    <DrinkItem
+                        key={drink.id} type={drink.type} amount={drink.amount} />)}
             </Card>
 
 
