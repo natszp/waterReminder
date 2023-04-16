@@ -4,7 +4,7 @@ import './DrinkForm.css'
 const DrinkForm = (props) => {
 
     const [enteredType, setEnteredType] = useState('')
-    const[enteredAmount, setEnteredAmount] = useState('')
+    const [enteredAmount, setEnteredAmount] = useState('')
 
     const typeChangeHandler = (event) => {
         setEnteredType(event.target.value)
@@ -49,7 +49,7 @@ const DrinkForm = (props) => {
                     </div>
                 </div>
                 <div className='new-drink__actions'>
-                    <button type="button">Cancel</button>
+                    <button type='button' onClick={props.onCancel}>Cancel</button>
                     <button type='submit'>Add Drink</button>
                 </div>
             </form>
