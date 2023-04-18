@@ -9,7 +9,7 @@ const WeightForm = (props) => {
     const inputChangeHandler = (event) => {
         let inputValue = event.target.value
         if (!typeof(inputValue) === 'number' || 20>inputValue) {
-           console.log('error');
+           console.log('error'); // proper validation to be added
             
         } else {
             setWeight(event.target.value)
