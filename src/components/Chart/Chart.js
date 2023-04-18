@@ -17,27 +17,28 @@ const Chart = (props) => {
         setHydration(hydrationRecommended)
     }
 
-    let barFillHeight = '0%';
-    barFillHeight = Math.round((props.drinksAmount / hydrationRecommended) * 100) + '%';
+    let barFillWidth = '0%';
+    barFillWidth = Math.round((props.drinksAmount / hydrationRecommended) * 100) + '%';
 
 
     return (
-        <div>
+        <Card>
             <div className='calculator'>
                 <WeightForm onChangeWeight={calculatorHandler} />
                 <MonitorWeightIcon color='black' fontSize='large' />
                 <div className='info'>{props.drinksAmount} / {hydrationRecommended} ml</div>
             </div>
-            <div className='chart-bar'>
-                <div className='chart-bar__inner'>
-                    <div
-                        className='chart-bar__fill'
-                        style={{ height: barFillHeight }}
-                    ></div>
+            <div className='chart'>
+                <div className='chart-bar'>
+                    <div className='chart-bar__inner'>
+                        <div
+                            className='chart-bar__fill'
+                            style={{ width: barFillWidth }}
+                        ></div>
+                    </div>
                 </div>
             </div>
-        </div>
-
+        </Card>
     )
 }
 
