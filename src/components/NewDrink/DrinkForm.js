@@ -33,6 +33,7 @@ const DrinkForm = (props) => {
                         <label>Type</label>
                         <input
                             type='text'
+                            required={true}
                             value={enteredType}
                             onChange={typeChangeHandler}
                         />
@@ -44,6 +45,7 @@ const DrinkForm = (props) => {
                             value={enteredAmount}
                             min='100'
                             step='100'
+                            required={true}
                             onChange={amountChangeHandler}
                         />
                     </div>
