@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { TextField } from "@mui/material"
 
 const WeightForm = (props) => {
 
@@ -13,7 +14,13 @@ const WeightForm = (props) => {
     return (
         <div>
             <form>
-                <input type='number' label='weight' value={enteredWeight} onChange={inputChangeHandler}></input>
+                <TextField id="outlined-basic"
+                    label="Weight (kg)"
+                    variant="outlined"
+                    type='number'
+                    min='20'
+                    value={enteredWeight}
+                    onChange={inputChangeHandler} />
             </form>
         </div>
     )

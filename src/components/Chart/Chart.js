@@ -22,14 +22,12 @@ const Chart = (props) => {
 
 
     return (
-        <div className="drinks">
-         
-                <div>
-                    <WeightForm onChangeWeight={calculatorHandler} />
-                    <MonitorWeightIcon color='secondary' fontSize='large' />
-                </div>
-                <div className='chart-bar__label'>{props.drinksAmount} / {hydrationRecommended} ml</div>
-        
+        <div>
+            <div className='calculator'>
+                <WeightForm onChangeWeight={calculatorHandler} />
+                <MonitorWeightIcon color='black' fontSize='large' />
+                <div className='info'>{props.drinksAmount} / {hydrationRecommended} ml</div>
+            </div>
             <div className='chart-bar'>
                 <div className='chart-bar__inner'>
                     <div
