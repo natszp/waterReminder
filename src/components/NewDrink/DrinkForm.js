@@ -1,7 +1,15 @@
 import { useState } from 'react';
 import './DrinkForm.css'
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+import InputLabel from '@mui/material/InputLabel';
+import TextField from '@mui/material/TextField';
+
+
+const DRINK_TYPES = ['Water', 'Juice', 'Tea', 'Coffee']
 
 const DrinkForm = (props) => {
+
 
     const [enteredType, setEnteredType] = useState('')
     const [enteredAmount, setEnteredAmount] = useState('')
@@ -30,21 +38,25 @@ const DrinkForm = (props) => {
             <form onSubmit={submitFormHandler} >
                 <div className="new-drink__controls">
                     <div className="new-drink__control">
-                        <label>Type</label>
-                        <input
-                            type='text'
-                            required={true}
+                        <InputLabel>Type</InputLabel>
+                        <Select
                             value={enteredType}
                             onChange={typeChangeHandler}
-                        />
+                        >
+                            {DRINK_TYPES.map(drink =>
+                                <MenuItem value={drink}>{drink}</MenuItem>)}
+                        </Select>
+
                     </div>
                     <div className='new-drink__control'>
-                        <label>Amount</label>
-                        <input
-                            type='number'
+                        <InputLabel>Amount</InputLabel>
+                        <TextField
+                            type="number"
                             value={enteredAmount}
-                            min='100'
-                            step='100'
+                            InputLabelProps={{
+                                shrink: true,
+                            }}
+                            InputProps={{ inputProps: { min: 100, step: 100 } }}
                             required={true}
                             onChange={amountChangeHandler}
                         />
