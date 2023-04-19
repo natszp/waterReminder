@@ -56,7 +56,7 @@ const DrinkForm = (props) => {
                             InputLabelProps={{
                                 shrink: true,
                             }}
-                            InputProps={{ inputProps: { min: 100, step: 100 } }}
+                            InputProps={{ inputProps: { min: 100, step: 50 } }}
                             required={true}
                             onChange={amountChangeHandler}
                         />
