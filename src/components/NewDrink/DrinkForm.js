@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './DrinkForm.css'
+import Modal from '../UI /Modal';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import InputLabel from '@mui/material/InputLabel';
@@ -13,10 +14,22 @@ const DrinkForm = (props) => {
 
     const [enteredType, setEnteredType] = useState('')
     const [enteredAmount, setEnteredAmount] = useState('')
+    const [shownModal, setShownModal] = useState(false)
+
+
 
     const typeChangeHandler = (event) => {
         setEnteredType(event.target.value)
+        if (event.target.value === 'Coffee'){
+            setShownModal(true)
+        }
     }
+
+
+    const hideModalHandler = () => {
+        setShownModal(false)
+    }
+
 
     const amountChangeHandler = (event) => {
         setEnteredAmount(event.target.value)
@@ -28,10 +41,15 @@ const DrinkForm = (props) => {
             type: enteredType,
             amount: enteredAmount
         }
+
         props.onSaveDrinkData(drinkData);
         setEnteredType('')
         setEnteredAmount('')
     }
+
+
+
+    const warningContent = 'Be careful! Safe amount of caffeinated drinks amounts to aproximately 4 cups of coffee per day'
 
     return (
         <div>
@@ -67,6 +85,9 @@ const DrinkForm = (props) => {
                     <button type='submit'>Add Drink</button>
                 </div>
             </form>
+
+
+            { shownModal && <Modal onOpen={shownModal} content={warningContent} buttonContent='Understood' onConfirm={hideModalHandler} />}
         </div>
     )
 }
