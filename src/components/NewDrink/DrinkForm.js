@@ -87,7 +87,7 @@ const DrinkForm = (props) => {
             </form>
 
 
-            { shownModal && <Modal onOpen={shownModal} content={warningContent} buttonContent='Understood' onConfirm={hideModalHandler} />}
+            { shownModal && <Modal onOpen={shownModal} content={warningContent} onConfirm={hideModalHandler} />}
         </div>
     )
 }
