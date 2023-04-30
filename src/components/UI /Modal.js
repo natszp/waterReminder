@@ -20,7 +20,7 @@ const Modal = (props) => {
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={props.onConfirm} autoFocus>
-                        {props.buttonContent}
+                        {props.buttonContent || 'Understood'}
                     </Button>
                 </DialogActions>
             </Dialog>
