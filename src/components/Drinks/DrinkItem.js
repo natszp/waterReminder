@@ -17,7 +17,7 @@ const DrinkItem = (props) => {
                 {props.type === 'Coffee' && <CoffeeIcon />}
                 {props.type === 'Tea' && <EmojiFoodBeverageIcon />}
                 {props.type === 'Juice' && <BlenderIcon />}
-                <div><h2>{props.type}</h2></div>
+                <div data-testid='drinkItem'><h2>{props.type}</h2></div>
             </div>
             <div className='drink-item__type'>{props.amount}</div>
         </Card>
