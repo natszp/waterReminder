@@ -60,9 +60,10 @@ const DrinkForm = (props) => {
                         <Select
                             value={enteredType}
                             onChange={typeChangeHandler}
+                            data-testid='select'
                         >
                             {DRINK_TYPES.map(drink =>
-                                <MenuItem value={drink}>{drink}</MenuItem>)}
+                                <MenuItem key={drink} value={drink}>{drink}</MenuItem>)}
                         </Select>
 
                     </div>
