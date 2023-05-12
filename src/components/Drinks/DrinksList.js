@@ -8,7 +8,7 @@ const DrinksList = (props) => {
 
 
     return (
-        <div>
+        <>
             <Card className='drinks'>
                 {props.drinks.length === 0 && noDrinksInfo}
                 {props.drinks.map(drink =>
@@ -17,7 +17,7 @@ const DrinksList = (props) => {
             </Card>
 
 
-        </div>
+        </>
     )
 
 }

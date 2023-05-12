@@ -52,7 +52,7 @@ const DrinkForm = (props) => {
     const warningContent = 'Be careful! Safe amount of caffeinated drinks amounts to aproximately 4 cups of coffee per day'
 
     return (
-        <div>
+        <>
             <form onSubmit={submitFormHandler} >
                 <div className="new-drink__controls">
                     <div className="new-drink__control">
@@ -89,7 +89,7 @@ const DrinkForm = (props) => {
 
 
             { shownModal && <Modal onOpen={shownModal} content={warningContent} onConfirm={hideModalHandler} />}
-        </div>
+        </>
     )
 }
 

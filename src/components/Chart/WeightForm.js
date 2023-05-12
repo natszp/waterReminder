@@ -20,7 +20,7 @@ const WeightForm = (props) => {
 
 
     return (
-        <div>
+        <>
             <form>
                 <TextField id="outlined-basic"
                     label="Weight (kg)"
@@ -34,7 +34,7 @@ const WeightForm = (props) => {
                     value={enteredWeight}
                     onChange={inputChangeHandler} />
             </form>
-        </div>
+        </>
     )
 }
 

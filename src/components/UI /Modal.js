@@ -9,7 +9,7 @@ import  Button  from '@mui/material/Button';
 const Modal = (props) => {
 
     return (
-        <div>
+        <>
             <Dialog open={props.onOpen}>
                 <DialogTitle id="alert-dialog-title">
                 </DialogTitle>
@@ -24,7 +24,7 @@ const Modal = (props) => {
                     </Button>
                 </DialogActions>
             </Dialog>
-        </div>
+        </>
     )
 
 }
