@@ -1,7 +1,7 @@
 import WeightForm from './WeightForm';
 import Card from '../UI /Card';
 import './Chart.css'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import MonitorWeightIcon from '@mui/icons-material/MonitorWeight';
 import Button from '@mui/material/Button';
 import Modal from './../UI /Modal'
@@ -35,7 +35,22 @@ const Chart = (props) => {
     }
 
     // to be developed 
-    const hydrationLevel = `Your hydration level is ${Math.round((props.drinksAmount/hydrationRecommended *100))}%`
+    let hydrationLevelInfo;
+    const hydrationLevel =  `${Math.round((props.drinksAmount / hydrationRecommended * 100))}`
+
+
+    if (props.drinksAmount >= hydrationRecommended) {
+        hydrationLevelInfo = `You achieved your daily hydration goal! You are ${hydrationLevel}% hydrated`
+    } else {
+        hydrationLevelInfo = `Your hydration level is ${hydrationLevel}%`
+    }
+
+
+    useEffect(() => {
+        if (props.drinksAmount >= hydrationRecommended) {
+            setShowModal(true)
+        }
+    }, [props.drinksAmount, hydrationRecommended])
 
 
     return (
@@ -58,10 +73,10 @@ const Chart = (props) => {
                 </div>
             </div>
             <Button onClick={showModalHandler}>Check hydration</Button>
-            {shownModal && <Modal onOpen={shownModal} content={hydrationLevel} onConfirm={hideModalHandler}/>}
+            {shownModal && <Modal onOpen={shownModal} content={hydrationLevelInfo} onConfirm={hideModalHandler} />}
         </Card>
     )
-    
+
 }
 
 export default Chart;

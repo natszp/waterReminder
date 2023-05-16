@@ -3,11 +3,11 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import  Button  from '@mui/material/Button';
+import Button from '@mui/material/Button';
+import ReactDOM from 'react-dom';
 
 
-const Modal = (props) => {
-
+const ModalOverlay = (props) => {
     return (
         <>
             <Dialog open={props.onOpen}>
@@ -24,6 +24,21 @@ const Modal = (props) => {
                     </Button>
                 </DialogActions>
             </Dialog>
+        </>
+    )
+}
+
+
+const Modal = (props) => {
+
+    return (
+        <>
+            {ReactDOM.createPortal(<ModalOverlay
+                onOpen={props.onOpen}
+                content={props.content}
+                onConfirm={props.onConfirm}
+                buttonContent={props.buttonContent}
+            />, document.getElementById('modal-root'))}
         </>
     )
 
