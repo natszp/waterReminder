@@ -1,6 +1,7 @@
 import { useState } from "react"
 import DrinkForm from "./DrinkForm"
 import './NewDrink.css'
+import Button from '@mui/material/Button';
 
 
 const NewDrink = (props) => {
@@ -28,7 +29,7 @@ const NewDrink = (props) => {
 
     return (
         <div className="new-drink">
-            {!shownForm && <button onClick={showFormHandler}>Add drink</button>}
+            {!shownForm && <Button onClick={showFormHandler}>Add drink</Button>}
             {shownForm && <DrinkForm onSaveDrinkData={addDrinkHandler} onCancel={hideFormHandler}/>}
         </div>
     )

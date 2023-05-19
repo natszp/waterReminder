@@ -5,6 +5,7 @@ import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import InputLabel from '@mui/material/InputLabel';
 import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 
 
 const DRINK_TYPES = ['Water', 'Juice', 'Tea', 'Coffee']
@@ -83,8 +84,8 @@ const DrinkForm = (props) => {
                     </div>
                 </div>
                 <div className='new-drink__actions'>
-                    <button type='button' onClick={props.onCancel}>Cancel</button>
-                    <button type='submit'>Add Drink</button>
+                    <Button type='button' onClick={props.onCancel}>Cancel</Button>
+                    <Button type='submit'>Add Drink</Button>
                 </div>
             </form>
 
