@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './DrinkForm.css'
+import classes from './DrinkForm.module.css'
 import Modal from '../UI /Modal';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
@@ -55,8 +55,8 @@ const DrinkForm = (props) => {
     return (
         <>
             <form onSubmit={submitFormHandler} >
-                <div className="new-drink__controls">
-                    <div className="new-drink__control">
+                <div className={classes["new-drink__controls"]}>
+                    <div className={classes["new-drink__control"]}>
                         <InputLabel>Type</InputLabel>
                         <Select
                             value={enteredType}
@@ -69,7 +69,7 @@ const DrinkForm = (props) => {
                         </Select>
 
                     </div>
-                    <div className='new-drink__control'>
+                    <div className={classes['new-drink__control']}>
                         <InputLabel>Amount</InputLabel>
                         <TextField
                             type="number"
@@ -83,7 +83,7 @@ const DrinkForm = (props) => {
                         />
                     </div>
                 </div>
-                <div className='new-drink__actions'>
+                <div className={classes['new-drink__actions']}>
                     <Button type='button' onClick={props.onCancel}>Cancel</Button>
                     <Button type='submit'>Add Drink</Button>
                 </div>

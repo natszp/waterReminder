@@ -1,5 +1,5 @@
 
-import './Card.css';
+import classes from './Card.module.css';
 
 const Card = (props) => {
     const classes = 'card ' + props.className

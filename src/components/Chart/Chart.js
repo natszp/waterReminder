@@ -1,6 +1,6 @@
 import WeightForm from './WeightForm';
 import Card from '../UI /Card';
-import './Chart.css'
+import classes from './Chart.module.css'
 import { useEffect, useState } from 'react';
 import MonitorWeightIcon from '@mui/icons-material/MonitorWeight';
 import Button from '@mui/material/Button';
@@ -55,16 +55,16 @@ const Chart = (props) => {
 
     return (
         <Card>
-            <div className='calculator'>
+            <div className={classes.calculator}>
                 <WeightForm onChangeWeight={calculatorHandler} />
                 <MonitorWeightIcon color='black' fontSize='large' />
                 <div className='info' id='hydrationLevelDiv'>{actualVsRecommendedHydration}</div>
             </div>
-            <div className='chart'>
-                <div className='chart-bar'>
-                    <div className='chart-bar__inner'>
+            <div className={classes.chart}>
+                <div className={classes['chart-bar']}>
+                    <div className={classes['chart-bar__inner']}>
                         <div
-                            className='chart-bar__fill'
+                            className={classes['chart-bar__fill']}
                             style={{ width: barFillWidth }}
                         >
                         </div>

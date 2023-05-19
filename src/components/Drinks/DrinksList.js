@@ -1,15 +1,15 @@
 import DrinkItem from "./DrinkItem"
 import Card from "../UI /Card"
-import './DrinksList.css'
+import classes from './DrinksList.module.css'
 
 const DrinksList = (props) => {
 
-    const noDrinksInfo = <p className="info">No drinks to show</p>
+    const noDrinksInfo = <p className={classes.info}>No drinks to show</p>
 
 
     return (
         <>
-            <Card className='drinks'>
+            <Card className={classes.drinks}>
                 {props.drinks.length === 0 && noDrinksInfo}
                 {props.drinks.map(drink =>
                     <DrinkItem
