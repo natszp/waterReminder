@@ -59,6 +59,7 @@ const DrinkForm = (props) => {
                         <InputLabel>Type</InputLabel>
                         <Select
                             value={enteredType}
+                            required={true}
                             onChange={typeChangeHandler}
                             data-testid='select'
                         >
