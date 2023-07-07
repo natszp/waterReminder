@@ -30,9 +30,9 @@ const passwordReducer = (state, action) => {
 
 const Login = (props) => {
 
-    const [emailState, dispatchEmail] = useReducer(emailReducer, { value: '', isValid: false })
-    const [passwordState, dispatchPassword] = useReducer(passwordReducer, { value: '', isValid: false })
-    const [formIsValid, setFormIsValid] = useState(false);
+    const [emailState, dispatchEmail] = useReducer(emailReducer, { value: '', isValid: false });
+    const [passwordState, dispatchPassword] = useReducer(passwordReducer, { value: '', isValid: false });
+    const [formIsValid, setFormIsValid] = useState(true);
 
 
     const emailChangeHandler = (event) => {
