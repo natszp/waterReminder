@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useReducer, useEffect } from 'react';
 
 import Card from '../UI /Card'
 import classes from './Login.module.css';
@@ -7,42 +7,67 @@ import InputLabel from '@mui/material/InputLabel';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
+const emailReducer = (state, action) => {
+    if (action.type === 'USER_INPUT') {
+        return { value: action.val, isValid: action.val.includes('@') }
+    }
+    if (action.type === 'INPUT_BLUR') {
+        return { value: state.value, isValid: state.value.includes('@') }
+    }
+    return { value: '', isValid: false }
 
+}
+
+const passwordReducer = (state, action) => {
+    if (action.type === 'USER_INPUT') {
+        return { value: action.val, isValid: action.val.trim().length > 6 }
+    }
+    if (action.type === 'INPUT_BLUR') {
+        return { value: state.value, isValid: state.value.trim().length > 6 }
+    }
+    return { value: '', isValid: false }
+}
 
 const Login = (props) => {
-    const [enteredEmail, setEnteredEmail] = useState('');
-    const [emailIsValid, setEmailIsValid] = useState();
-    const [enteredPassword, setEnteredPassword] = useState('');
-    const [passwordIsValid, setPasswordIsValid] = useState();
+
+    const [emailState, dispatchEmail] = useReducer(emailReducer, { value: '', isValid: false })
+    const [passwordState, dispatchPassword] = useReducer(passwordReducer, { value: '', isValid: false })
     const [formIsValid, setFormIsValid] = useState(false);
 
-    const emailChangeHandler = (event) => {
-        setEnteredEmail(event.target.value);
 
-        setFormIsValid(
-            event.target.value.includes('@') && enteredPassword.trim().length > 6
-        );
+    const emailChangeHandler = (event) => {
+        dispatchEmail({ type: 'USER_INPUT', val: event.target.value })
     };
 
     const passwordChangeHandler = (event) => {
-        setEnteredPassword(event.target.value);
-
-        setFormIsValid(
-            event.target.value.trim().length > 6 && enteredEmail.includes('@')
-        );
+        dispatchPassword({ 'type': 'USER_INPUT', val: event.target.value })
     };
 
     const validateEmailHandler = () => {
-        setEmailIsValid(enteredEmail.includes('@'));
+        dispatchEmail({
+            type: 'INPUT_BLUR'
+        });
     };
 
     const validatePasswordHandler = () => {
-        setPasswordIsValid(enteredPassword.trim().length > 6);
+        dispatchPassword({
+            type: 'INPUT_BLUR'
+        })
     };
+
+
+    useEffect(() => {
+        const identifier = setTimeout(() => {
+            setFormIsValid(
+                emailState.isValid && passwordState.isValid
+            )
+        }, 500)
+        return () => { clearTimeout(identifier) }
+    }, [emailState, passwordState])
 
     const submitHandler = (event) => {
         event.preventDefault();
-        props.onLogin(enteredEmail, enteredPassword);
+        props.onLogin({email: emailState.value, password: passwordState.value});
     };
 
     return (
@@ -50,30 +75,34 @@ const Login = (props) => {
             <Header text='Log in & check your hydration data' />
             <Card className={classes.login}>
 
-                <form onSubmit={submitHandler}>
+                <form onSubmit={submitHandler} data-testid='form'>  <div>
+
                     <div>
 
-                        <InputLabel>E-mail</InputLabel>
+                        <InputLabel>Your e-mail</InputLabel>
                         <TextField
                             type="email"
-                            value={enteredEmail}
+                            label="email"
+                            value={emailState.value}
                             required={true}
                             onChange={emailChangeHandler}
                             onBlur={validateEmailHandler} />
                     </div>
+                    <InputLabel>Your password</InputLabel>
 
-                    <div>
-                        <InputLabel>Password</InputLabel>
+                    <TextField
+                        type="password"
+                        label="password"
+                        value={passwordState.value}
+                        required={true}
+                        onChange={passwordChangeHandler}
+                        onBlur={validatePasswordHandler} />
+                </div>
 
-                        <TextField
-                            type="password"
-                            value={enteredPassword}
-                            required={true}
-                            onChange={passwordChangeHandler}
-                            onBlur={validatePasswordHandler} />
-                    </div>
+
+
                     <div className={classes.actions}>
-                        <Button type="submit" disabled={!formIsValid}>
+                        <Button type="submit" disabled={!formIsValid} aria-label='login'>
                             Login
                         </Button>
                     </div>
