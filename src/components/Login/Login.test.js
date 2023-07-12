@@ -28,4 +28,20 @@ describe('logging in correctly', ()=> {
     
 
     })
+
+    test('LOGIN button becomes active when both e-mail and password pass the validation', () => {
+
+        render(<Login/>);
+
+        const emailInput = screen.getByRole('textbox', {name: /email/i});
+        const passwordInput = screen.getByLabelText('password *');
+        const loginButton = screen.getByRole('button', {name: /login/i})
+    
+        user.type(emailInput, 'nat@gmail.com');
+        user.type(passwordInput, '123password');
+
+        expect(loginButton).not.toBeDisabled()
+
+        
+    })
 })
