@@ -85,7 +85,7 @@ const DrinkForm = (props) => {
                 </div>
                 <div className={classes['new-drink__actions']}>
                     <Button type='button' onClick={props.onCancel}>Cancel</Button>
-                    <Button type='submit'>Add Drink</Button>
+                    <Button type='submit' aria-label='add'>Add Drink</Button>
                 </div>
             </form>
 
