@@ -6,6 +6,10 @@ const DrinksList = (props) => {
 
     const noDrinksInfo = <p className={classes.info}>No drinks to show</p>
 
+    const removeDrinkHandler = (drink) => {
+        props.onRemoveDrinkFromDrinks(drink)
+    }
+
 
     return (
         <>
@@ -13,7 +17,7 @@ const DrinksList = (props) => {
                 {props.drinks.length === 0 && noDrinksInfo}
                 {props.drinks.map(drink =>
                     <DrinkItem
-                        key={drink.id} type={drink.type} amount={drink.amount} />)}
+                        key={drink.id} type={drink.type} amount={drink.amount} onRemoveDrink={removeDrinkHandler}/>)}
             </Card>
 
 

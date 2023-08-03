@@ -1,4 +1,4 @@
-import { useState} from 'react';
+import { useState } from 'react';
 import { Card } from '@material-ui/core';
 import classes from './App.module.css';
 import Login from './components/Login/Login'
@@ -32,17 +32,23 @@ const App = () => {
     )
   }
 
+  const removeDrinkHandler = (drink) => {
+    console.log(drink, 'in App')
+  }
+
   return (
     <div className={classes.App}>
-        <Card>
-          {!isLoggedIn &&
-            <Login onLogin={loginHandler} />}
-          {isLoggedIn && <>
-            <Header text='Welcome' buttonText='Logout' onClick={logoutHandler} />
-            <Chart drinksAmount={drinksAmount} />
-            <NewDrink onAddDrinkToDrinks={addToDrinksHandler} />
-            <DrinksList drinks={drinks} /> </>}
-        </Card>
+      <Card>
+        {!isLoggedIn &&
+          <Login onLogin={loginHandler} />}
+        {isLoggedIn && <>
+          <Header text='Welcome' buttonText='Logout' onClick={logoutHandler} />
+          <Chart drinksAmount={drinksAmount} />
+          <NewDrink onAddDrinkToDrinks={addToDrinksHandler} />
+          <DrinksList drinks={drinks} onRemoveDrinkFromDrinks={removeDrinkHandler}/>
+        </>}
+
+      </Card>
     </div>
   );
 }
