@@ -27,12 +27,12 @@ const DrinkItem = (props) => {
 
     const removeDrinkHandler = (drink) => {
         props.onRemoveDrink(drink)
-      }
+    }
 
 
-    
-    const content = <RemoveDrinkForm id={props.id} amount={props.amount} type={props.type} onRemoveDrinkData={removeDrinkHandler}/>
-    
+
+    const content = <RemoveDrinkForm id={props.id} amount={props.amount} type={props.type} onRemoveDrinkData={removeDrinkHandler} />
+
 
     return (
         <Card className={classes['drink-item']}>
@@ -43,8 +43,9 @@ const DrinkItem = (props) => {
                 {props.type === 'Juice' && <BlenderIcon />}
                 <div data-testid='drinkItem'><h2>{props.type}</h2></div>
             </div>
-            <div className={classes['drink-item__type']}>{props.amount}</div>
-            <Button onClick={showModalHandler}>Delete</Button>
+            <div className={classes['drink-item__type']}>{props.amount}
+                <Button onClick={showModalHandler}>Delete</Button>
+            </div>
             {shownModal && <Modal onOpen={shownModal} content={content} buttonContent='Close' onConfirm={hideModalHandler} />}
         </Card>
     )
