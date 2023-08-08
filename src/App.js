@@ -33,7 +33,8 @@ const App = () => {
   }
 
   const removeDrinkHandler = (drink) => {
-    console.log(drink, 'in App')
+    setDrinks(
+    drinks.filter((element) => element.id != drink.id))
   }
 
   return (

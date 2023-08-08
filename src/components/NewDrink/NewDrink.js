@@ -14,7 +14,6 @@ const NewDrink = (props) => {
 
     const hideFormHandler = () => {
         setShownForm(false)
-        console.log('clicked cancel')
     }
 
     const addDrinkHandler = (enteredDrinkData) => {

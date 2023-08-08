@@ -11,13 +11,14 @@ const DrinksList = (props) => {
     }
 
 
+
     return (
         <>
             <Card className={classes.drinks}>
                 {props.drinks.length === 0 && noDrinksInfo}
                 {props.drinks.map(drink =>
                     <DrinkItem
-                        key={drink.id} type={drink.type} amount={drink.amount} onRemoveDrink={removeDrinkHandler}/>)}
+                        key={drink.id} id={drink.id} type={drink.type} amount={drink.amount} onRemoveDrink={removeDrinkHandler}/>)}
             </Card>
 
 

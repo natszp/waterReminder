@@ -25,7 +25,6 @@ const RemoveDrinkForm = (props) => {
                 InputLabelProps={{
                     shrink: true,
                 }}
-                InputProps={{ inputProps: { min: 0, step: 50 } }}
                 required={true}
             />
             <div>
